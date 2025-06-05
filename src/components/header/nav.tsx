@@ -1,10 +1,22 @@
 "use client";
 import { useState } from "react";
-import { AppBar, Box, Button, Container, Drawer, IconButton, List, ListItem, Toolbar, Typography } from "@mui/material";
+import { AppBar, Box, Container, Drawer, IconButton, List, ListItem, Toolbar, Typography } from "@mui/material";
 import Icons from "components/ui/icons";
+import Link from "next/link";
 
 
-const navItems = ["Inicio", "Productos", "Contacto"];
+const navItems = [{
+  label: "Inicio",
+  link: "/",
+},
+{
+  label: "Productos",
+  link: "/productos",
+},
+{
+  label: "Contacto",
+  link: "/contacto",
+}];
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -17,9 +29,9 @@ export default function Navbar() {
         Saeta .
       </Typography>
       <List>
-        {navItems.map((item) => (
-          <ListItem key={item}>
-            <Typography>{item}</Typography>
+        {navItems.map((i, key) => (
+          <ListItem key={key}>
+            <Typography>{i.label}</Typography>
           </ListItem>
         ))}
       </List>
@@ -39,8 +51,10 @@ export default function Navbar() {
           </IconButton>
 
           <Box sx={{ gap: 2, alignItems: "center", display: { xs: "none", sm: "flex" } }}>
-            {navItems.map((item) => (
-              <Button key={item}>{item}</Button>
+            {navItems.map((i, key) => (
+              <Link key={key} href={i.link}>
+                <Typography>{i.label}</Typography>
+              </Link>
             ))}
             <IconButton>
               <Icons name="shopping-cart" size={24} />

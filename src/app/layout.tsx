@@ -3,6 +3,8 @@ import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
 import { Poppins } from "next/font/google";
 import { ThemeProvider } from "@mui/material/styles";
 import theme from "../modules/hooks/theme";
+import { Container } from "@mui/material";
+import Navbar from "components/header/nav";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -18,7 +20,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body className={poppins.variable}>
         <AppRouterCacheProvider>
-          <ThemeProvider theme={theme}>{children}</ThemeProvider>
+          <ThemeProvider theme={theme}>
+            <Container maxWidth="lg">
+              <Navbar />
+              {children}
+            </Container>
+          </ThemeProvider>
         </AppRouterCacheProvider>
       </body>
     </html>
