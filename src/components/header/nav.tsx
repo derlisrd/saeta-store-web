@@ -2,9 +2,9 @@
 import { useState } from "react";
 import { AppBar, Box, Button, Container, Drawer, IconButton, List, ListItem, Toolbar, Typography } from "@mui/material";
 import Icons from "components/ui/icons";
-import Icon from "components/ui/icon";
 
-const navItems = ["Inicio", "Productos", "Nosotros", "Contacto"];
+
+const navItems = ["Inicio", "Productos", "Contacto"];
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -12,7 +12,7 @@ export default function Navbar() {
   const handleDrawerToggle = () => setMobileOpen(!mobileOpen);
 
   const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
+    <Box onClick={handleDrawerToggle} sx={{ textAlign: "center", mx: 2, minWidth: 240 }}>
       <Typography variant="h6" fontWeight="bold" sx={{ my: 2 }}>
         Saeta .
       </Typography>
@@ -34,19 +34,19 @@ export default function Navbar() {
             Saeta .
           </Typography>
 
-          <IconButton edge="end" onClick={handleDrawerToggle}>
-            <Icon>menu</Icon>
+          <IconButton edge="end" onClick={handleDrawerToggle} sx={{ display: { xs: "block", sm: "none" } }}>
+            <Icons name="menu-2" size={24} />
           </IconButton>
 
-          <Box sx={{ display: "flex", gap: 2, alignItems: "center" }}>
+          <Box sx={{ gap: 2, alignItems: "center", display: { xs: "none", sm: "flex" } }}>
             {navItems.map((item) => (
               <Button key={item}>{item}</Button>
             ))}
             <IconButton>
-              <Icons name="shopping-cart" size={24} color="black" />
+              <Icons name="shopping-cart" size={24} />
             </IconButton>
             <IconButton>
-              <Icon>users</Icon>
+              <Icons name="user" size={24} />
             </IconButton>
           </Box>
         </Toolbar>
