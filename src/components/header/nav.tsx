@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { AppBar, Box, Container, Drawer, IconButton, List, ListItem, Toolbar, Typography } from "@mui/material";
+import { AppBar, Box, Container, Drawer, IconButton, List, ListItem, Toolbar, Typography, Link as Linkable } from "@mui/material";
 import Icons from "components/ui/icons";
 import Link from "next/link";
 
@@ -40,9 +40,9 @@ export default function Navbar() {
 
   return (
     <Container maxWidth="lg">
-      <AppBar component="nav" position="fixed" color="default" elevation={1}>
+      <AppBar component="nav" position="fixed" sx={{ backdropFilter: "blur(7px)", backgroundColor: "rgba(255, 255, 255, 0.7)" }}>
         <Toolbar sx={{ justifyContent: "space-between" }}>
-          <Typography variant="h6" fontWeight="bold" sx={{ my: 2 }}>
+          <Typography variant="h6" fontWeight="bold" color="primary" sx={{ my: 2 }}>
             Saeta .
           </Typography>
 
@@ -52,9 +52,9 @@ export default function Navbar() {
 
           <Box sx={{ gap: 2, alignItems: "center", display: { xs: "none", sm: "flex" } }}>
             {navItems.map((i, key) => (
-              <Link key={key} href={i.link}>
-                <Typography>{i.label}</Typography>
-              </Link>
+              <Linkable component={Link} key={key} href={i.link} color="text.secondary" sx={{ textDecoration: "none" }}>
+                <Typography variant="body2">{i.label}</Typography>
+              </Linkable>
             ))}
             <IconButton>
               <Icons name="shopping-cart" size={24} />
