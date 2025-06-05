@@ -40,7 +40,7 @@ export default function Navbar() {
 
   return (
     <Container maxWidth="lg">
-      <AppBar component="nav" position="fixed" sx={{ backdropFilter: "blur(7px)", backgroundColor: "rgba(255, 255, 255, 0.7)" }}>
+      <AppBar component="nav" position="fixed" elevation={0} sx={{ backdropFilter: "blur(8px)", backgroundColor: "rgba(255, 255, 255, 0.8)" }}>
         <Toolbar sx={{ justifyContent: "space-between" }}>
           <Typography variant="h6" fontWeight="bold" color="primary" sx={{ my: 2 }}>
             Saeta .
