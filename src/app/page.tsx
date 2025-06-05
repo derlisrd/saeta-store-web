@@ -1,4 +1,4 @@
-import { Container, Typography } from "@mui/material";
+import { Container } from "@mui/material";
 import NavComponent from "components/header/nav";
 
 export default function Page() {
