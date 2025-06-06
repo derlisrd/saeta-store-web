@@ -40,33 +40,48 @@ export default function Navbar() {
   );
 
   return (
-    <Box width="100%" sx={{ position: "fixed", top: 0, left: 0, py: 2, backdropFilter: "blur(8px)", backgroundColor: "rgba(255, 255, 255, 0.8)" }}>
-      <Container maxWidth="lg">
-        <Stack direction="row" justifyContent="space-between">
-          <Typography variant="h6" fontWeight="bold" color="primary">
-            Saeta .
-          </Typography>
-          <IconButton edge="end" onClick={handleDrawerToggle} sx={{ display: { xs: "block", sm: "none" } }}>
-            <Icons name="menu-2" size={24} />
-          </IconButton>
-          <Box sx={{ gap: 2, alignItems: "center", display: { xs: "none", sm: "flex" } }}>
-            {navItems.map((i, key) => (
-              <Linkable component={Link} key={key} href={i.link} color="text.secondary" sx={{ textDecoration: "none", mx: 1 }}>
-                <Typography variant="body1">{i.label}</Typography>
-              </Linkable>
-            ))}
-            <IconButton>
-              <Icons name="shopping-cart" size={24} />
+    <>
+      <Box
+        width="100%"
+        sx={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          boxShadow: "3px 3px 10px 4px rgba(0, 0, 0, 0.1)",
+          py: 1.5,
+          zIndex: 100,
+          backdropFilter: "blur(8px)",
+          backgroundColor: "rgba(255, 255, 255, 0.8)",
+        }}
+      >
+        <Container maxWidth="lg">
+          <Stack direction="row" justifyContent="space-between">
+            <Typography variant="h6" fontWeight="bold" color="primary">
+              Store .
+            </Typography>
+            <IconButton edge="end" onClick={handleDrawerToggle} sx={{ display: { xs: "block", sm: "none" } }}>
+              <Icons name="menu-2" size={24} />
             </IconButton>
-            <IconButton>
-              <Icons name="user" size={24} />
-            </IconButton>
-          </Box>
-        </Stack>
-      </Container>
+            <Box sx={{ gap: 2, alignItems: "center", display: { xs: "none", sm: "flex" } }}>
+              {navItems.map((i, key) => (
+                <Linkable component={Link} key={key} href={i.link} color="text.secondary" sx={{ textDecoration: "none", mx: 1 }}>
+                  <Typography variant="body1">{i.label}</Typography>
+                </Linkable>
+              ))}
+              <IconButton>
+                <Icons name="shopping-cart" size={24} />
+              </IconButton>
+              <IconButton>
+                <Icons name="user" size={24} />
+              </IconButton>
+            </Box>
+          </Stack>
+        </Container>
+      </Box>
+      <Box pb={6} pt={6} />
       <Drawer anchor="left" open={mobileOpen} onClose={handleDrawerToggle}>
         {drawer}
       </Drawer>
-    </Box>
+    </>
   );
 }
