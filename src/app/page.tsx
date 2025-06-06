@@ -1,4 +1,5 @@
 import { Container, Typography } from "@mui/material";
+import HomeCategorySection from "components/sections/home.category";
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -8,9 +9,7 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <Container>
-      <Typography variant="h1" component="h1">
-        Inicio
-      </Typography>
+      <HomeCategorySection />
     </Container>
   );
 }

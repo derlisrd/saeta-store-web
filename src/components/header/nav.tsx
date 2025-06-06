@@ -25,17 +25,15 @@ export default function Navbar() {
   const handleDrawerToggle = () => setMobileOpen(!mobileOpen);
 
   const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: "center", mx: 2, minWidth: 240 }}>
-      <Typography variant="h6" fontWeight="bold" sx={{ my: 2 }}>
-        Saeta .
+    <Box onClick={handleDrawerToggle} sx={{ mx: 2, minWidth: 240, p: 1 }}>
+      <Typography variant="h6" fontWeight="bold" color="primary">
+        Store .
       </Typography>
-      <List>
-        {navItems.map((i, key) => (
-          <ListItem key={key}>
-            <Typography>{i.label}</Typography>
-          </ListItem>
-        ))}
-      </List>
+      {navItems.map((i, key) => (
+        <Linkable component={Link} key={key} href={i.link} color="text.secondary" sx={{ textDecoration: "none", mx: 1 }}>
+          <Typography variant="body1">{i.label}</Typography>
+        </Linkable>
+      ))}
     </Box>
   );
 
@@ -59,13 +57,22 @@ export default function Navbar() {
             <Typography variant="h6" fontWeight="bold" color="primary">
               Store .
             </Typography>
-            <IconButton edge="end" onClick={handleDrawerToggle} sx={{ display: { xs: "block", sm: "none" } }}>
-              <Icons name="menu-2" size={24} />
-            </IconButton>
+            <Stack direction='row' sx={{ gap: 2, alignItems: "center", display: { xs: "flex", sm: "none" } }}>
+              <IconButton>
+                <Icons name="shopping-cart" size={24} />
+              </IconButton>
+              <IconButton>
+                <Icons name="user" size={24} />
+              </IconButton>
+              <IconButton edge="end" onClick={handleDrawerToggle} >
+                <Icons name="menu-2" size={24} />
+              </IconButton>
+            </Stack>
+
             <Box sx={{ gap: 2, alignItems: "center", display: { xs: "none", sm: "flex" } }}>
               {navItems.map((i, key) => (
                 <Linkable component={Link} key={key} href={i.link} color="text.secondary" sx={{ textDecoration: "none", mx: 1 }}>
-                  <Typography variant="body1">{i.label}</Typography>
+                  <Typography variant="body2">{i.label}</Typography>
                 </Linkable>
               ))}
               <IconButton>
