@@ -1,4 +1,4 @@
-'use server'
+"use server";
 
 import { Card, CardContent, CardMedia, Grid, Typography } from "@mui/material";
 
@@ -9,16 +9,14 @@ async function getData() {
   return data;
 }
 
-
-
 async function Productos() {
-  const data = await getData()
+  const data = await getData();
 
   return (
     <Grid container spacing={2}>
       {data.map((i, key) => (
         <Grid size={{ xs: 6, sm: 4, md: 3 }} key={key}>
-          <Card sx={{ maxHeight: 345, height: "100%", boxShadow: "none" }}>
+          <Card sx={{ maxHeight: 345, height: "100%" }}>
             <CardMedia component="img" height="140" image={i.image} alt={i.name} sx={{ objectFit: "contain", padding: 2 }} />
             <CardContent>
               <Typography variant="caption" color="text.secondary">
